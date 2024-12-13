@@ -1,0 +1,26 @@
+query GithubIssueComments($repository: String!, $number: Int!, $after: String) {
+    viewer {
+        repository(name: $repository) {
+            name
+            issue(number: $number) {
+                title
+                body
+                author {
+                    login
+                }
+                comments(first: 100, after: $after) {
+                    nodes {
+                        body
+                        author {
+                            login
+                        }
+                    }
+                    pageInfo {
+                        hasNextPage
+                        endCursor
+                    }
+                }
+            }
+        }
+    }
+}

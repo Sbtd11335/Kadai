@@ -1,0 +1,26 @@
+query GithubIssues($repository: String!, $first: Int!, $after: String) {
+    viewer {
+        repository(name: $repository) {
+            id
+            issues(first: $first, after: $after) {
+                nodes {
+                    title
+                    closed
+                    labels(first: 100) {
+                        nodes {
+                            name
+                            color
+                        }
+                    }
+                    author {
+                        login
+                    }
+                }
+                pageInfo {
+                    hasNextPage
+                    endCursor
+                }
+            }
+        }
+    }
+}

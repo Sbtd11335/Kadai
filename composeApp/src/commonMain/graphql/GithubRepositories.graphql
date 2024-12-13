@@ -1,0 +1,15 @@
+query GithubRepositories($first: Int!, $after: String) {
+    viewer {
+        repositories(first: $first, after: $after) {
+            nodes {
+                name
+                url
+                description
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+    }
+}
